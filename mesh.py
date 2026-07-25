@@ -1,14 +1,9 @@
 """
-mesh.py
--------
-Core geometry data structures for the 2D Finite Element Method (FEM) solver.
-
-This module provides classes for defining individual spatial points (Node),
-topological connectivity between nodes (Element), and the overall domain (Mesh).
-
+#################################################################################
 Author: Maninder Jeet Singh
 Email Id: maninder.padam@gmail.com and maninder.singh@st.ovgu.de
 Created: July 2026
+##################################################################################
 """
 
 
@@ -50,7 +45,7 @@ class Mesh:
         self.nodes.append(node)
 
     def add_element(self,element):
-        
+
         """Adding the nodes"""
         self.elements.append(element)
 

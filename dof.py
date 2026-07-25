@@ -1,14 +1,9 @@
 """
-dof.py
--------
-Degree of Freedom (DOF) management and indexing routines for the FEM solver.
-
-Handles global DOF enumeration across the mesh and extracts element gather 
-vectors needed for global system matrix assembly.
-
+#################################################################################
 Author: Maninder Jeet Singh
 Email Id: maninder.padam@gmail.com and maninder.singh@st.ovgu.de
 Created: July 2026
+##################################################################################
 """
 
 class DOFManager:
