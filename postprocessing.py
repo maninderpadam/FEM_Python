@@ -147,3 +147,51 @@ def element_stresses(element, material, Ue):
         stresses.append(stress)
 
     return stresses
+
+def von_mises_stress(stress):
+    """
+    Compute von Mises stress for plane stress.
+
+    Parameters
+    ----------
+    stress : ndarray (3,)
+        [sigma_x, sigma_y, tau_xy]
+
+    Returns
+    -------
+    sigma_vm : float
+    """
+
+    sigma_x = stress[0]
+    sigma_y = stress[1]
+    tau_xy  = stress[2]
+
+    sigma_vm = np.sqrt(
+        sigma_x**2
+        - sigma_x*sigma_y
+        + sigma_y**2
+        + 3*tau_xy**2
+    )
+
+    return sigma_vm
+
+def element_von_mises(element, material, Ue):
+    """
+    Compute von Mises stress at all Gauss points.
+    """
+
+    vm_values = []
+
+    stresses = element_stresses(
+        element,
+        material,
+        Ue
+    )
+
+    for stress in stresses:
+
+        vm = von_mises_stress(stress)
+
+        vm_values.append(vm)
+
+    return vm_values
