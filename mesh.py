@@ -30,7 +30,7 @@ class Element:
 
 
         nodes_ids=[node.id for node in self.nodes]
-        return f"Element (id={self.element_id}, nodes={nodes_ids}"
+        return f"Element (id={self.element_id}, nodes={nodes_ids})"
 
 class Mesh:
     """Stores collections of nodes and elements composing the computational domain."""

@@ -34,12 +34,6 @@ def jacobian(element,xi,eta):
     dy_dxi=np.dot(dN_dxi,y)
     dy_deta=np.dot(dN_deta,y)
 
-    print("xi =", xi)
-    print("eta =", eta)
-
-    print("dN_dxi =", dN_dxi)
-    print("dN_deta =", dN_deta)
-
     J=np.array([
         [dx_dxi, dy_dxi],
         [dx_deta, dy_deta]
@@ -47,18 +41,12 @@ def jacobian(element,xi,eta):
 
     return J
 
-def global_derivatives(element, xi, eta):
+def global_derivatives(invJ, xi, eta):
     """
     Compute dN/dx and dN/dy for a 4-node quadrilateral.
     """
-
+    
     dN_dxi, dN_deta = shape_function_derivatives(xi, eta)
-
-  
-    J = jacobian(element, xi, eta)
-
-
-    invJ = np.linalg.inv(J)
 
     dN_nat = np.vstack((dN_dxi, dN_deta))
 
@@ -82,7 +70,7 @@ def jacobian_inverse(J):
 
 def B_Matrix(dN_dx, dN_dy):
 
-    B=np.zeros(3,8)
+    B=np.zeros((3,8))
 
     for i in range(4):
 
@@ -109,7 +97,7 @@ def element_stiffness(element,material):
         detJ, invJ=jacobian_inverse(J)
 
         # 3. Compute global derivatives
-        dN_dx,dN_dy=global_derivatives(element,xi,eta)
+        dN_dx,dN_dy=global_derivatives(invJ,xi,eta)
 
         # 4. Build B matrix
         B=B_Matrix(dN_dx,dN_dy)
