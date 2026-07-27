@@ -171,14 +171,7 @@ where:
 The equivalent von Mises stress for plane stress is
 
 $$
-\sigma_{vm}
-=
-\sqrt{
-\sigma_x^2
--\sigma_x\sigma_y
-+\sigma_y^2
-+3\tau_{xy}^2
-}
+\sigma_{vm}=\sqrt{\sigma_x^2-\sigma_x\sigma_y+\sigma_y^2+3\tau_{xy}^2}
 $$
 
 ## Current Example
