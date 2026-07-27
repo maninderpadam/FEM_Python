@@ -105,49 +105,72 @@ Von Mises Stress
 
 ## Mathematical Formulation
 
-### Global System
+The governing equation of linear elasticity is
 
-\[
+$$
 KU = F
-\]
+$$
 
-where
+where:
 
 - **K** – Global stiffness matrix
 - **U** – Nodal displacement vector
 - **F** – External force vector
 
----
-
 ### Element Stiffness Matrix
 
-\[
-K_e=\int_{\Omega} B^T D B\, d\Omega
-\]
+The element stiffness matrix is computed as
 
-The numerical integration is performed using **2×2 Gauss Quadrature**.
+$$
+K_e = \int_{\Omega} B^T D B \, d\Omega
+$$
+
+where:
+
+- **B** – Strain-displacement matrix
+- **D** – Constitutive (material) matrix
+- **Ω** – Element domain
+
+The integral is evaluated numerically using **2×2 Gauss Quadrature**.
 
 ---
 
-### Strain
+### Strain Recovery
 
-\[
+The strain at each Gauss point is computed from the element displacement vector as
+
+$$
 \varepsilon = B U_e
-\]
+$$
+
+where:
+
+- **ε** – Strain vector
+- **B** – Strain-displacement matrix
+- **Uₑ** – Element displacement vector
 
 ---
 
-### Stress
+### Stress Recovery
 
-\[
+The stress is obtained using Hooke's law
+
+$$
 \sigma = D\varepsilon
-\]
+$$
+
+where:
+
+- **σ** – Stress vector
+- **D** – Material constitutive matrix
 
 ---
 
 ### Von Mises Stress
 
-\[
+The equivalent von Mises stress for plane stress is
+
+$$
 \sigma_{vm}
 =
 \sqrt{
@@ -156,9 +179,7 @@ The numerical integration is performed using **2×2 Gauss Quadrature**.
 +\sigma_y^2
 +3\tau_{xy}^2
 }
-\]
-
----
+$$
 
 ## Current Example
 
